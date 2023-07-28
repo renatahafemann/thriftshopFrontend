@@ -28,7 +28,7 @@ function Category() {
             <Row>           
             {category.map((category) => (
                 <Col xs={6} md={4} className="my-2">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '20rem' }}>
                     <Card.Img variant="top" src={category.src} height={350}/>
                     <Card.Body>
                         <Card.Title>{category.name}</Card.Title>
