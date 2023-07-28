@@ -1,0 +1,10 @@
+.imageContainer {
+    height: 16.66rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+  }
+  
