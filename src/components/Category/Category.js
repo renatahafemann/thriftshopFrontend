@@ -32,9 +32,12 @@ function ProductByCategory(){
                 <Card.Img variant="top" src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1372&q=80" height={350}/>
                 <Card.Body className="text-center">
                     <Card.Title>{product.name}</Card.Title>
-                    <Card.Text>$ {product.price}</Card.Text>
+                    <Card.Text>
+                      <p>Size: {product.size}</p>
+                      <p>${product.price}</p>
+                      </Card.Text>
                     <Button variant="outline-secondary" href={`/products/details/${product.id}`}> View details</Button>    
-                    <Button variant="outline-secondary" href={`/products/details/${product.id}`}> Add as favorite</Button>  
+                    <Button variant="outline-secondary" href="#"> Add as favorite</Button>  
                                          
                 </Card.Body>
                 </Card>                

@@ -11,19 +11,19 @@ function Category() {
     const category = [{
         src: source,
         name: "BABY",
-        description: "baby 0-12n"
+        description: "Baby 0-12m"
     },{
         src: source,
         name: "TODDLER",
-        description: "toddler 12-24m"
+        description: "Toddler 12-24m"
     },{
         src: source,
         name: "LITTLEKID",
-        description: "little kid 2-4years"
+        description: "Little kid 2-4years"
     },{
         src: source,
         name: "BIGKID",
-        description: "big kid 5-16years"
+        description: "Big kid 5-16years"
     }
     ]
 
