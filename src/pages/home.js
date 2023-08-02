@@ -1,12 +1,12 @@
 import React from "react";
 import Hero from "../components/Header/Hero";
-import Category from "../components/Category/Category";
+import CategoryList from "../components/CategoryList/CategoryList";
 
 function Home(){
     return(
         <>
             <Hero />
-            <Category />
+            <CategoryList />
         </>
     )
 

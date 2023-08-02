@@ -4,22 +4,20 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {useParams} from "react-router-dom";
 
-function ProductByCategory(){
+function ProductList(){
 
     const [products, setProducts] = useState([]);
-    const { category } = useParams();
     
     const fetchData = async () => {
-        const response = await fetch(`/products/${category}`);
+        const response = await fetch('/products');
         const data = await response.json();
         setProducts(data);
     }
 
     useEffect(() => {
         fetchData()
-      });
+      }, [])
   
   return (
     <div>
@@ -33,9 +31,7 @@ function ProductByCategory(){
                 <Card.Body className="text-center">
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>$ {product.price}</Card.Text>
-                    <Button variant="outline-secondary" href={`/products/details/${product.id}`}> View details</Button>    
-                    <Button variant="outline-secondary" href={`/products/details/${product.id}`}> Add as favorite</Button>  
-                                         
+                    <Button variant="outline-secondary">View details</Button>                    
                 </Card.Body>
                 </Card>                
             </Col>))}       
@@ -46,4 +42,5 @@ function ProductByCategory(){
   )
 }
 
-export default ProductByCategory;
+export default ProductList;
+
