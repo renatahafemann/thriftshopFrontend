@@ -37,7 +37,7 @@ function ProductByCategory(){
                       <p>${product.price}</p>
                       </Card.Text>
                     <Button variant="outline-secondary" href={`/products/details/${product.id}`}> View details</Button>    
-                    <Button variant="outline-secondary" href="#"> Add as favorite</Button>  
+                    <Button variant="outline-secondary" href="#" value={product.id}> Add as favorite</Button>  
                                          
                 </Card.Body>
                 </Card>                

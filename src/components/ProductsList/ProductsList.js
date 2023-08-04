@@ -31,7 +31,7 @@ function ProductList(){
                 <Card.Body className="text-center">
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>$ {product.price}</Card.Text>
-                    <Button variant="outline-secondary">View details</Button>                    
+                                      
                 </Card.Body>
                 </Card>                
             </Col>))}       

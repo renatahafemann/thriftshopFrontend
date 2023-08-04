@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useParams} from "react-router-dom";
 
+
 function ProductDetails(){
 
     const [productDetail, setProductDetail] = useState({});
@@ -20,7 +21,8 @@ function ProductDetails(){
     useEffect(() => {
         fetchData()
       }, []);
-  
+
+
   return (  
     <Container>
         <Row>     
@@ -33,7 +35,8 @@ function ProductDetails(){
                         $ {productDetail.price}
                         {productDetail.description}
                     </Card.Text>
-                    <Button variant="outline-secondary">Add to Cart</Button>                    
+                    <Button variant="outline-secondary">Add to Cart</Button>
+                                           
                 </Card.Body>
                 </Card>                
             </Col>       

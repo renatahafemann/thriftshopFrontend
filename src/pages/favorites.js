@@ -1,12 +1,12 @@
 import React from "react";
-import ProductList from "../components/ProductsList/ProductsList";
+import FavoritesList from "../components/Favorites/FavoritesList";
 
-function Favorites(){
-    return(
-        <div>
-            <p>Favorites page</p>
-            <ProductList />
-        </div>
+function Favorites() {
+
+    return (
+        <>
+            <FavoritesList />
+        </>
     )
 }
 

@@ -1,18 +1,17 @@
 import React, {useState} from "react";
 import '../Signup/NewAccount.css'
 
-function CheckLogin(){
+function CheckLogin({onLogin}){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [firstName, setFirstName] = useState('');
-
-
+    const [passwordError, setPasswordError] = useState('');  
+    
+    
     let handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         try {
           let res = await fetch("/clients/login", {
             method: "POST",
@@ -25,17 +24,15 @@ function CheckLogin(){
                 password: password,
             }),
           });
+          
           const data = await res.json();
-          if (res.status === 200) {      
-            setEmail("");
-            setPassword("");
-            setEmailError("");
-            setPasswordError("");
-
-            alert(`Hello ${data.firstName}`);  
-               
+          if (res.status === 200) {                       
+            const clientId = data.id;
+            const isLogged = true;             
+            onLogin({email, clientId, isLogged});
+          
           } else {            
-            setEmailError(data.message);          
+            setEmailError(data.message);              
           }
         } catch (err) {
           console.log(err);
@@ -68,8 +65,8 @@ function CheckLogin(){
                   setPasswordError(fieldError.message);
                 }               
               });
-            } else {             
-                handleSubmit(e);       
+            } else {     
+              handleSubmit(e);       
             }          
         }
          catch (err) {
