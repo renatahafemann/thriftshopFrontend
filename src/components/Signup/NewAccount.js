@@ -50,7 +50,7 @@ function NewAccount(){
         e.preventDefault();
             
         try {
-            let res = await fetch("/login", {
+            let res = await fetch("/verification/newAccount", {
               method: "POST",
               headers: {
                   "Accept": "application/json",
@@ -63,8 +63,8 @@ function NewAccount(){
                   password: password,
               }),
             })
-          const data = await res.json()
-          .then((data) => {
+          const data = await res.json();
+          
             if(data.fieldErrors) {
               data.fieldErrors.forEach(fieldError => {
                 if(fieldError.field === 'email'){
@@ -83,7 +83,7 @@ function NewAccount(){
             } else {
               handleSubmit(e);
             }
-          })} catch (err) {
+          } catch (err) {
             console.log(err);
           }
       };

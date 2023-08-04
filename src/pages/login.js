@@ -1,11 +1,15 @@
 import React from "react";
-import Signup from "../components/Login/signup";
-import NewAccount from "../components/Login/NewAccount";
+
+import NewAccount from "../components/Signup/NewAccount";
+import CheckLogin from "../components/Login/CheckLogin";
+
 
 function Login(){
     return(
         <>
             <NewAccount/>
+            <CheckLogin />
+            
         </>
     )
 }
