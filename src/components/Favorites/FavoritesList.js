@@ -1,5 +1,4 @@
 import React from "react";
-import ProductList from "../ProductsList/ProductsList";
 import { CookiesProvider, useCookies } from "react-cookie";
 import CheckLogin from "../Login/CheckLogin";
 import UserFavorites from "./UserFavorites";

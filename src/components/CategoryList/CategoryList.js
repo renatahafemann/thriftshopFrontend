@@ -1,9 +1,10 @@
 import React from "react";
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import './CategoryList.css';
+import Container from '@mui/material/Container';
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import { Link } from "react-router-dom";
 
 
 function Category() {
@@ -26,26 +27,29 @@ function Category() {
         description: "Big kid 5-16years"
     }
     ]
-
-    return (
-        <Container>
-            <Row>           
-            {category.map((category) => (
-                <Col xs={6} md={4} className="my-2">
-                    <Card style={{ width: '20rem' }}>
-                    <Card.Img variant="top" src={category.src} height={350}/>
-                    <Card.Body className="text-center">
-                        <Card.Title>{category.description}</Card.Title>
-                        <Button variant="outline-secondary" href={`/products/${category.name}`}>Shop category</Button>
-                    </Card.Body>
-                    </Card>
-                    
-                </Col>))}       
-            </Row>
-        </Container>
+        return (
+            <Container>
+            <h1>Shop by Category</h1>
+            <ImageList sx={{ width: 1000, height: 850 }} cols={4} rowHeight={250} gap={25}>
+                {category.map((category) => (
+                    <Link to={`/products/${category.name}`}>
+                    <ImageListItem key={category.name}>
+                    <img
+                        src={`${category.src}?w=650&h=650&fit=crop&auto=format`}
+                        srcSet={`${category.src}?w=550&h=550&fit=crop&auto=format&dpr=2 2x`}
+                        alt={category.name}
+                        loading="lazy"
+                    />
+                    <ImageListItemBar title={category.name}
+                    subtitle={category.description} />
+                    </ImageListItem>
+                    </Link>
+                ))}
+            </ImageList>
+            </Container>
+        )
+    }
         
-    )
-}        
 
 export default Category;
 

@@ -6,10 +6,11 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useParams} from "react-router-dom";
 
-function ProductByCategory(){
+function ProductByCategory({client}){
 
     const [products, setProducts] = useState([]);
     const { category } = useParams();
+    const [disabled, setDisabled] = useState(false);
     
     const fetchData = async () => {
         const response = await fetch(`/products/${category}`);
@@ -20,6 +21,26 @@ function ProductByCategory(){
     useEffect(() => {
         fetchData()
       });
+
+      let handleFavorite = async (e) => {
+        e.preventDefault();
+        
+        try {
+          let res = await fetch(`/favorites/add?clientId=${client.clientId}&productId=${e.target.value}`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+              },            
+          });
+          const data = await res.json();
+          if(res.status === 200){
+            setDisabled(true);          
+          }           
+        } catch (err) {
+          console.log(err);
+        }
+      };
   
   return (
     <div>
@@ -37,8 +58,7 @@ function ProductByCategory(){
                       <p>${product.price}</p>
                       </Card.Text>
                     <Button variant="outline-secondary" href={`/products/details/${product.id}`}> View details</Button>    
-                    <Button variant="outline-secondary" href="#" value={product.id}> Add as favorite</Button>  
-                                         
+                    {client ? <Button variant="outline-secondary" value={product.id} onClick={handleFavorite} disabled={disabled}> Add as favorite</Button>  : <Button variant="outline-secondary" href="/login"> Add as favorite</Button>}                                       
                 </Card.Body>
                 </Card>                
             </Col>))}       

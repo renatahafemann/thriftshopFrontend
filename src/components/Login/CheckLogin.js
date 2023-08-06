@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import '../Signup/NewAccount.css'
+import { Navigate } from "react-router-dom";
 
 function CheckLogin({onLogin}){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');  
-    
+    const [passwordError, setPasswordError] = useState(''); 
+    const [authenticated, setAuthenticated ] = useState(false);    
     
     let handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,10 +28,11 @@ function CheckLogin({onLogin}){
           
           const data = await res.json();
           if (res.status === 200) {                       
-            const clientId = data.id;
-            const isLogged = true;             
-            onLogin({email, clientId, isLogged});
-          
+            const clientId = data.id;  
+            const firstName = data.firstName;        
+            onLogin({email, clientId, firstName});
+            setAuthenticated(true);
+            
           } else {            
             setEmailError(data.message);              
           }
@@ -49,8 +51,7 @@ function CheckLogin({onLogin}){
                 "Accept": "application/json",
                 "Content-Type": "application/json"
               },
-            body: JSON.stringify({
-                
+            body: JSON.stringify({               
                 email: email,
                 password: password,
             }),
@@ -74,8 +75,12 @@ function CheckLogin({onLogin}){
         }
       };
 
+      if(authenticated){
+        return <Navigate replace to="/"/>;
+      } else{
 
       return (
+        
         <div className="NewAccount">
           <form onSubmit={checkError}>
           
@@ -99,6 +104,6 @@ function CheckLogin({onLogin}){
           </form>
         </div>
       );
-    }
+    }}
 
 export default CheckLogin;

@@ -22,6 +22,7 @@ function Topbar() {
           <div className="d-flex justify-content-end">
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+              {cookies.client ? <Navbar.Brand href="/">Welcome back {cookies.client.firstName}</Navbar.Brand> : null}
             { cookies.client ? <Nav.Link onClick={handleLogout}>Logout</Nav.Link> : <Nav.Link href="/login">Login/Sign up</Nav.Link>  }           
               <Nav.Link href="/favorites">Favorites</Nav.Link>
             </Nav>
