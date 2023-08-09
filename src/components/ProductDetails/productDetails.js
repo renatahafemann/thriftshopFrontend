@@ -1,16 +1,23 @@
 import React, {useState, useEffect} from "react";
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import {useParams} from "react-router-dom";
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Button from '@mui/material/Button';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 
 function ProductDetails(){
 
     const [productDetail, setProductDetail] = useState({});
     const { id } = useParams();
+    const theme = createTheme({
+        palette: {
+          green: {
+            main: '#008b8b'            
+          },
+        },
+      });
     
     const fetchData = async () => {
         const response = await fetch(`/products/details/${id}`);
@@ -23,28 +30,23 @@ function ProductDetails(){
       }, []);
 
 
-  return (  
-    <Container>
-        <Row>     
-            <Col xs={6} md={4} className="my-2">
-                <Card style={{ width: '20rem' }}>
-                <Card.Img variant="top" src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1372&q=80" height={350}/>
-                <Card.Body className="text-center">
-                    <Card.Title>{productDetail.name}</Card.Title>
-                    <Card.Text>
-                        $ {productDetail.price}
-                        {productDetail.description}
-                    </Card.Text>
-                    <Button variant="outline-secondary">Add to Cart</Button>
-                                           
-                </Card.Body>
-                </Card>                
-            </Col>       
-        </Row>
-    </Container>
-      
-    
-  )
+    return(
+        <Container className="themeColor">
+            <Grid container marginTop={15} >
+                <Grid columns={{ xs: 4, sm: 8, md: 12 }} marginRight={3}>
+                    <img src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1372&q=80" height={450} alt="details"/>
+                </Grid>
+                <Grid marginLeft={3}>
+                    <h2>{productDetail.name}</h2>
+                    <p>Price: CAD {productDetail.price}</p>
+                    <p>Description:<br />{productDetail.description}</p>
+                    <ThemeProvider theme={theme}>
+                    <Button variant="outlined" color="green" startIcon={<ShoppingCartIcon />}> Add to cart</Button>
+                    </ThemeProvider>
+                </Grid>
+            </Grid>
+        </Container>
+    )
 }
 
 export default ProductDetails;

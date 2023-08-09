@@ -1,7 +1,7 @@
 import React from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
-import CheckLogin from "../Login/CheckLogin";
 import UserFavorites from "./UserFavorites";
+import SignIn from "../Login/SignIn";
 
 function FavoritesList() {
   const [cookies, setCookie] = useCookies(["client"]);
@@ -16,7 +16,7 @@ function FavoritesList() {
         {cookies.client ? (
           <UserFavorites client={cookies.client}/>
         ) : (
-          <CheckLogin onLogin={handleLogin} />
+          <SignIn onLogin={handleLogin} />
         )}
       </div>
     </CookiesProvider>

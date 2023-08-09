@@ -1,7 +1,17 @@
 import React from "react";
-import "./topbar.css";
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Hero(){
+  const defaultTheme = createTheme({
+    palette: {
+      white: {
+        main: '#FFF',
+        contrastText: '#FFF'            
+      },
+    },
+  });
+
     return(     
         <div
         className='p-5 text-center bg-image heroImage'
@@ -10,7 +20,10 @@ function Hero(){
           <div className='d-flex justify-content-center align-items-center h-100'>
             <div className='text-white'>
               <h1 className='mb-3'>Kid's thrift store</h1>
-              <h4 className='mb-3'>Your online store to find great deals for your little ones.</h4>             
+              <h4 className='mb-3'>Your online store to find great deals for your little ones.</h4> 
+              <ThemeProvider theme={defaultTheme}>
+              <Button variant="outlined" color="white" className="mt-4" href="/products">View all products</Button>  
+              </ThemeProvider>          
             </div>         
           </div>       
       </div>    

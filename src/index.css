@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.themeColor{
+  color:#008b8b;
+  font-family: sans-serif;
+}
+
+.themeColor p{
+  color: rgba(128, 128, 128, 0.753);
+}
+
+.themeColor a{
+  color: #008b8b;
+}
+
+.heroImage{ 
+  height: 400;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;    
+}
+
+.mainContainer{
+  overflow: hidden;
+}
+

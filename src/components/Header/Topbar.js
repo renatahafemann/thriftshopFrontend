@@ -4,7 +4,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { CookiesProvider, useCookies } from "react-cookie";
 
-
 function Topbar() {
   const [cookies, setCookies] = useCookies(["client"]);
 
@@ -15,14 +14,14 @@ function Topbar() {
   
   return (
     <CookiesProvider>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary themeColor">
         <Container>
           <Navbar.Brand href="/">Kid's thrift store</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <div className="d-flex justify-content-end">
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              {cookies.client ? <Navbar.Brand href="/">Welcome back {cookies.client.firstName}</Navbar.Brand> : null}
+              {cookies.client ? <Navbar.Brand href="/">Welcome {cookies.client.firstName}</Navbar.Brand> : null}
             { cookies.client ? <Nav.Link onClick={handleLogout}>Logout</Nav.Link> : <Nav.Link href="/login">Login/Sign up</Nav.Link>  }           
               <Nav.Link href="/favorites">Favorites</Nav.Link>
             </Nav>
