@@ -14,7 +14,7 @@ function FavoritesList() {
     <CookiesProvider>
       <div>
         {cookies.client ? (
-          <UserFavorites client={cookies.client}/>
+          <UserFavorites client={cookies.client} />
         ) : (
           <SignIn onLogin={handleLogin} />
         )}
