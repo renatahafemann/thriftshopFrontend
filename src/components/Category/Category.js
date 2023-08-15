@@ -36,9 +36,8 @@ function ProductByCategory({ client }) {
       const id = client.clientId;
       const response = await fetch(`/favorites/find/${id}`);
       const responseData = await response.json();
-      if (response.status === 200) {
-        setFavorites(responseData);
-      }
+      setFavorites(responseData);
+      
     } catch (err) {
       console.log(err);
     }

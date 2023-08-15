@@ -9,7 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function UserFavorites({ client }) {
   const [favorites, setFavorites] = useState([]);
-  const [dataError, setDataError] = useState([]);
+  const [dataError, setDataError] = useState("");
   const id = client.clientId;
   const name = client.firstName;
   const src =
@@ -26,12 +26,11 @@ function UserFavorites({ client }) {
     try {
       const response = await fetch(`/favorites/find/${id}`);
       const responseData = await response.json();
-
-      if (response.status === 200) {
-        setFavorites(responseData);
-      } else {
-        setDataError(responseData.message);
+      setFavorites(responseData);
+      if(favorites.length === 0){
+        setDataError("You don't have any favorites yet.");
       }
+      
     } catch (err) {
       console.log(err);
     }
