@@ -6,7 +6,7 @@ This repository contains the front end code.
 
 ## Main features
 * Database backend in H2 to store products, favorites and users.
-* Frontend written on React/Material UI to accept users input and display content.
+* Frontend written on React, using Material UI and Bootstrap, to accept users input and display content.
 * Backend running Spring Boot handles user requests and communicates with database.
 * Authentication of user whenever he/she logs into the website.
 * If user tries to access the Favorites page but it’s not logged in, he/she is directed to the login page.
