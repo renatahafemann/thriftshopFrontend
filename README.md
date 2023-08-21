@@ -2,6 +2,10 @@
 This project was developed as part of my Software Development program.
 It is a kid's thrift store that allow users to view all available products by category, login, create a new account and add products as favorite.
 It contains two main parts, the front end developed in JavaScript using React and the back end developed in Java using Spring Boot.
+<<<<<<< HEAD
+=======
+This repository contains the front end code.
+>>>>>>> 8cb6d75725f7a3175487edd85273e5ac95a56c8d
 
 ## Main features
 * Database backend in H2 to store products, favorites and users.
